@@ -1,0 +1,176 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+#main-container {
+    width: 100%;
+    height: 100%;
+    display: table-row;
+}
+
+#left-content {
+    width: 38%;
+    height: 100%;
+    display: table-cell;
+    background-color: black;
+}
+
+#cover_img {
+    width: 100%;
+    height: 100vh;
+    display: block;
+    float: left;
+    object-fit: cover;
+    opacity: 0;
+    animation: sliding-from-left 2s forwards 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes sliding-from-left {
+    from { width: 0%; opacity: 0; }
+    to { width: 100%; opacity: 1; }
+}
+
+#right-content {
+    width: 62%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: top;
+    background-color: black;
+}
+
+#content-conteiner {
+    width: 100%;
+    height: 100%;
+}
+
+#content-header {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+#home-title {
+    margin-top: 10%;
+    margin-left: 10%;
+    position: relative;
+    overflow: hidden;
+    color: whitesmoke;
+    visibility: hidden;
+    white-space: nowrap;
+    font-size: 7em;
+    font-weight: bold;
+    letter-spacing: .15em;
+    animation: show-hometitle 0.5s forwards 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes show-hometitle {
+    99% { visibility: hidden; }
+    100% { visibility: visible; }
+}
+
+#home-title::before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: 5%;
+    visibility: visible;
+    background-color: black;
+    animation: hometitle-cover-pull 1s forwards 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes hometitle-cover-pull {
+    0% { height: 0%; background-color: whitesmoke; }
+    50% { height: 100%; }
+    100% { height: 0%; background-color: whitesmoke; }
+}
+
+#content-center {
+    width: 100%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#subtitles-sect {
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.subtitle-wrapper {
+    margin-bottom: 5%;
+    margin-left: 10%;
+    position: relative;
+}
+
+.subtitle {
+    overflow: hidden;
+    letter-spacing: .3em;
+    color: black;
+    white-space: nowrap;
+    font-size: 1.5em;
+    animation: show-subtitle 0.8s forwards steps(35, end) 3.3s;
+}
+
+@keyframes show-subtitle {
+    from { width: 0%; color: whitesmoke; }
+    to { width: 100%; color: whitesmoke; }
+}
+
+.subtitle::before {
+    content: "";
+    width: 18px;
+    height: 100%;
+    bottom: 5px;
+    position: absolute;
+    left: 100%;
+    background-color: transparent;
+    animation: typing 2s forwards steps(35, end) 2.8s;
+}
+
+@keyframes typing {
+    0% { left: 0%; background-color: whitesmoke; }
+    20% {left: 0%; background-color: whitesmoke; }
+    70% { left: 100%; }
+    99% {background-color: whitesmoke;}
+    100% {background-color: transparent;}
+}
+
+.subtitle::after {
+    content: "";
+    width: 18px;
+    height: 3px;
+    bottom: 5px;
+    position: absolute;
+    background-color: transparent;
+    animation: blinking 0.8s 4.5s 3;
+}
+
+@keyframes blinking {
+    from {background-color: transparent;}
+    to {background-color: whitesmoke;}
+}
+
+#content-footer {
+    width: 100%;
+    height: 14%;
+}
