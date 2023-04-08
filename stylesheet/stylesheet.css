@@ -45,7 +45,7 @@ main {
     z-index: 2;
     opacity: 0;
     animation: img-big-cover-slide 2s forwards 1s;
-    animation-timing-function: cubic-bezier(.13,.7,.35,.91);
+    animation-timing-function: cubic-bezier(.13, .7, .35, .91);
 }
 
 @keyframes img-big-cover-slide {
@@ -53,9 +53,11 @@ main {
         opacity: 1;
         width: 0%;
     }
+
     50% {
         width: 100%;
     }
+
     100% {
         opacity: 1;
         width: 0%;
@@ -101,56 +103,35 @@ main {
     height: 20%;
     display: flex;
     align-items: center;
+    margin: 0 auto;
 }
 
 #home-title {
     margin-left: 10%;
-    position: relative;
     overflow: hidden;
     color: whitesmoke;
-    visibility: hidden;
     white-space: nowrap;
     font-size: 8em;
     font-weight: bold;
     letter-spacing: .15em;
-    animation: show-hometitle 1s forwards 1s;
-    animation-timing-function: ease-in-out;
+    line-height: 1;
 }
 
-@keyframes show-hometitle {
-    99% {
-        visibility: hidden;
+#home-title-span {
+    display: block;
+    visibility: hidden;
+    animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards 0.5s;
+}
+
+@keyframes reveal {
+    0% {
+        visibility: visible;
+        transform: translate(0, 100%);
     }
 
     100% {
         visibility: visible;
-    }
-}
-
-#home-title::before {
-    content: "";
-    width: 100%;
-    position: absolute;
-    bottom: 5%;
-    visibility: visible;
-    background-color: black;
-    animation: hometitle-cover-pull 2s forwards 1s;
-    animation-timing-function: cubic-bezier(.13,.7,.35,.91);
-}
-
-@keyframes hometitle-cover-pull {
-    0% {
-        height: 0%;
-        background-color: whitesmoke;
-    }
-
-    50% {
-        height: 100%;
-    }
-
-    100% {
-        height: 0%;
-        background-color: whitesmoke;
+        transform: translate(0, 0);
     }
 }
 
@@ -163,7 +144,7 @@ main {
 }
 
 #subtitles-sect {
-    margin-left: 5%;
+    margin-left: 6%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -287,7 +268,7 @@ main {
     width: 0%;
     height: 100%;
     position: absolute;
-    background-color: whitesmoke;
+    background-color: rgb(170, 240, 240);
     animation: l-sector-animation 3s forwards infinite;
     animation-timing-function: cubic-bezier(.31, .58, .48, 1);
 }
@@ -296,7 +277,7 @@ main {
     width: 0%;
     height: 100%;
     position: absolute;
-    background-color: whitesmoke;
+    background-color: rgb(200, 240, 240);
     animation: r-sector-animation 3s forwards infinite;
     animation-timing-function: cubic-bezier(.69, 0, .73, .44);
 }

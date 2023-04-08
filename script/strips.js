@@ -9,7 +9,7 @@ function appendStrips(parent) {
     const stripsContainer = document.createElement('div');
     stripsContainer.id = 'strips-container';
 
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 30; i++) {
         const strip = document.createElement('div');
         strip.className = 'strip';
 
