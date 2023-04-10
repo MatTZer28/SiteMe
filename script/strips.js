@@ -1,5 +1,17 @@
 const STRIP_ANIMATION_DURATION = 3;
 const STRIPS_ANIMATION_DELAY = 2.8;
+const INTERVAL_IDS = [];
+
+document.addEventListener("DOMContentLoaded", loadStrips);
+
+document.addEventListener("visibilitychange", handleAnimation);
+
+function loadStrips() {
+    setTimeout(() => {
+        appendStrips(document.getElementById("img-strip"));
+        animateStrip();
+    }, STRIPS_ANIMATION_DELAY * 1000);
+}
 
 function appendStrips(parent) {
     const stripsContainer = document.createElement('div');
@@ -46,35 +58,59 @@ function animateStrip() {
     let lscs = document.getElementsByClassName("l-sector-container");
     let rscs = document.getElementsByClassName("r-sector-container");
 
+    randomAnimationStartUpDelay(lscs, rscs);
+
+    initialStripsStartUp(lscs, rscs);
+
+    initialStripsInterval(lscs, rscs);
+}
+
+function randomAnimationStartUpDelay(lscs, rscs) {
     for (let i = 0; i < lscs.length; i++) {
         let delay = ((Math.round((Math.random() * 2) * 100)) / 100).toString().concat("s");
 
         lscs[i].firstChild.style["animation-delay"] = delay;
         rscs[i].firstChild.style["animation-delay"] = delay;
     }
+}
 
+function initialStripsStartUp(lscs, rscs) {
     for (let i = 0; i < lscs.length; i++) {
         let rand_num = Math.round(((Math.random() * 8 + 1) / 10) * 100) / 100;
 
         lscs[i].style["flex-shrink"] = 1 - rand_num;
         rscs[i].style["flex-shrink"] = rand_num;
+    }
+}
 
+function initialStripsInterval(lscs, rscs) {
+    for (let i = 0; i < lscs.length; i++) {
         window.setTimeout(() => {
-            window.setInterval(() => {
-                let rand_num = Math.round(((Math.random() * 8 + 1) / 10) * 100) / 100;
-
-                lscs[i].style["flex-shrink"] = 1 - rand_num;
-                rscs[i].style["flex-shrink"] = rand_num;
-            }, 3000);
+            stripsAnimationInterval(lscs[i], rscs[i]);
         }, (Number(lscs[i].firstChild.style["animation-delay"].slice(0, -1)) + STRIP_ANIMATION_DURATION) * 1000);
     }
 }
 
-const loadStrips = () => {
-    setTimeout(() => {
-        appendStrips(document.getElementById("img-strip"));
-        animateStrip();
-    }, STRIPS_ANIMATION_DELAY * 1000);
-};
+function stripsAnimationInterval(lsc, rsc) {
+    let id = window.setInterval(() => {
+        let rand_num = Math.round(((Math.random() * 8 + 1) / 10) * 100) / 100;
 
-document.addEventListener("DOMContentLoaded", loadStrips);
+        lsc.style["flex-shrink"] = 1 - rand_num;
+        rsc.style["flex-shrink"] = rand_num;
+    }, STRIP_ANIMATION_DURATION * 3000);
+
+    INTERVAL_IDS.push(id);
+}
+
+function handleAnimation() {
+    if (document.hidden) return;
+
+    for (let id of INTERVAL_IDS) {
+        clearInterval(id);
+    }
+
+    let elm = document.getElementById('strips-container');
+    elm.parentNode.replaceChild(elm.cloneNode(true), elm);
+
+    animateStrip();
+}
