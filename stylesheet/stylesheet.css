@@ -95,14 +95,17 @@ main {
 .subtitle-wrapper {
     margin: 3%;
     position: relative;
+    z-index: 1;
 }
 
 .subtitle {
+    padding-left: 4%;
+    padding-bottom: 4%;
     overflow: hidden;
     letter-spacing: 0.5em;
     white-space: nowrap;
     visibility: hidden;
-    font-size: 1vw;
+    font-size: 1.2vw;
     font-weight: 100;
     animation: show-subtitle 0.8s forwards steps(35, end) 2s;
 }
@@ -131,8 +134,7 @@ main {
     -ms-user-select: none;
     /* Internet Explorer/Edge */
     user-select: none;
-    /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
 .subtitle::before {

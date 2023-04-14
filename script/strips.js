@@ -110,7 +110,9 @@ function handleAnimation() {
     }
 
     let elm = document.getElementById('strips-container');
-    elm.parentNode.replaceChild(elm.cloneNode(true), elm);
+    if (elm != null) {
+        elm.parentNode.replaceChild(elm.cloneNode(true), elm);
+    }
 
     animateStrip();
 }
