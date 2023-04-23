@@ -268,7 +268,7 @@ main {
     height: 80%;
     position: absolute;
     background-color: whitesmoke;
-    animation: l-sector-animation 3s forwards infinite;
+    animation: l-sector-animation 2s forwards infinite;
     animation-timing-function: cubic-bezier(.31, .58, .48, 1);
 }
 
@@ -277,7 +277,7 @@ main {
     height: 80%;
     position: absolute;
     background-color: whitesmoke;
-    animation: r-sector-animation 3s forwards infinite;
+    animation: r-sector-animation 2s forwards infinite;
     animation-timing-function: cubic-bezier(.69, 0, .73, .44);
 }
 
@@ -292,14 +292,14 @@ main {
         left: 0%;
     }
 
-    65% {
+    80% {
         width: 0%;
         left: 100%;
     }
 }
 
 @keyframes r-sector-animation {
-    35% {
+    20% {
         width: 0%;
         left: 0%;
     }
