@@ -24,7 +24,7 @@ main {
 }
 
 #left-content {
-    width: 38%;
+    width: 25%;
     height: 100%;
     display: table-cell;
     position: relative;
@@ -67,7 +67,7 @@ main {
 }
 
 #right-content {
-    width: 62%;
+    width: 75%;
     height: 100%;
     display: table-cell;
     vertical-align: top;
@@ -108,6 +108,7 @@ main {
     font-size: 1.2vw;
     font-weight: 100;
     animation: show-subtitle 0.8s forwards steps(35, end) 2s;
+    transition: color 0.5s;
 }
 
 @keyframes show-subtitle {
