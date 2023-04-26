@@ -269,7 +269,7 @@ main {
 
 .l-sector {
     width: 0%;
-    height: 80%;
+    height: 60%;
     position: absolute;
     background-image: linear-gradient(to right, rgb(210, 250, 255), rgb(230, 252, 255));
     animation: l-sector-animation 4s forwards infinite;
@@ -278,7 +278,7 @@ main {
 
 .r-sector {
     width: 0%;
-    height: 80%;
+    height: 60%;
     position: absolute;
     background-image: linear-gradient(to right, rgb(230, 252, 255), rgb(210, 250, 255));
     animation: r-sector-animation 4s forwards infinite;
