@@ -1,7 +1,7 @@
-const STRIP_ANIMATION_DURATION = 2;
+const STRIP_ANIMATION_DURATION = 4;
 const STRIPS_ANIMATION_DELAY = 2.8;
 const INTERVAL_IDS = [];
-const STRIPS_NUM = 30;
+const STRIPS_NUM = 25;
 
 document.addEventListener("DOMContentLoaded", loadStrips);
 
@@ -28,6 +28,7 @@ function appendStrips(parent) {
 function createStrip() {
     const strip = document.createElement('div');
     strip.className = 'strip';
+    strip.style.width = `${Math.random() * 15 + 100}%`;
 
     const lSectorContainer = document.createElement('div');
     lSectorContainer.className = 'l-sector-container';
