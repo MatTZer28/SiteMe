@@ -1,6 +1,7 @@
 const STRIP_ANIMATION_DURATION = 2;
 const STRIPS_ANIMATION_DELAY = 2.8;
 const INTERVAL_IDS = [];
+const STRIPS_NUM = 30;
 
 document.addEventListener("DOMContentLoaded", loadStrips);
 
@@ -17,7 +18,7 @@ function appendStrips(parent) {
     const stripsContainer = document.createElement('div');
     stripsContainer.id = 'strips-container';
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < STRIPS_NUM; i++) {
         stripsContainer.appendChild(createStrip());
     }
 

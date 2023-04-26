@@ -105,8 +105,8 @@ main {
     letter-spacing: 0.5em;
     white-space: nowrap;
     visibility: hidden;
-    font-size: 1.2vw;
-    font-weight: 100;
+    font-size: 1vw;
+    font-weight: lighter;
     animation: show-subtitle 0.8s forwards steps(35, end) 2s;
     transition: color 0.5s;
 }
@@ -194,8 +194,9 @@ main {
 }
 
 #content-center {
-    width: 100%;
+    width: 93%;
     height: 65%;
+    margin-left: 7%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -207,7 +208,8 @@ main {
     margin-bottom: 10%;
     overflow: hidden;
     white-space: nowrap;
-    font-size: 10vw;
+    font-size: 12vw;
+    font-weight: bolder;
     line-height: 1;
 }
 
@@ -237,7 +239,7 @@ main {
 }
 
 #strips-container {
-    width: 100%;
+    width: 115%;
     height: 100%;
     display: flex;
     flex-direction: column;
