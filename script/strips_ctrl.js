@@ -28,7 +28,6 @@ function appendStrips(parent) {
 function createStrip() {
     const strip = document.createElement('div');
     strip.className = 'strip';
-    strip.style.width = `${Math.random() * 15 + 100}%`;
 
     const lSectorContainer = document.createElement('div');
     lSectorContainer.className = 'l-sector-container';
