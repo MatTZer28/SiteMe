@@ -1,0 +1,1 @@
+(self.webpackChunksiteme=self.webpackChunksiteme||[]).push([[979],{979:()=>{document.addEventListener("DOMContentLoaded",(function(){const e=new Image,n=document.getElementById("cover-img");e.src="img/cover.jpg",e.decode().then((()=>{n.src=e.src}))}))}}]);
