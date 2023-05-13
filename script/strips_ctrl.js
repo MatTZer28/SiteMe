@@ -3,26 +3,124 @@ const STRIPS_ANIMATION_DELAY = 2.8;
 const INTERVAL_IDS = [];
 const STRIPS_NUM = 25;
 
-document.addEventListener("DOMContentLoaded", loadStrips);
+const STRIPS_CSS_STYLE = `
+#strips-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.strip {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.l-sector-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 1;
+    position: relative;
+}
+
+.r-sector-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 1;
+    position: relative;
+}
+
+.l-sector {
+    width: 0%;
+    height: 60%;
+    position: absolute;
+    background-image: linear-gradient(to right, rgb(210, 250, 255), rgb(230, 252, 255));
+    animation: l-sector-animation 4s forwards infinite;
+    animation-timing-function: cubic-bezier(.31, .58, .48, 1);
+}
+
+.r-sector {
+    width: 0%;
+    height: 60%;
+    position: absolute;
+    background-image: linear-gradient(to right, rgb(230, 252, 255), rgb(210, 250, 255));
+    animation: r-sector-animation 4s forwards infinite;
+    animation-timing-function: cubic-bezier(.69, 0, .73, .44);
+}
+
+@keyframes l-sector-animation {
+    0% {
+        width: 0%;
+        left: 0%;
+    }
+
+    25% {
+        width: 100%;
+        left: 0%;
+    }
+
+    80% {
+        width: 0%;
+        left: 100%;
+    }
+}
+
+@keyframes r-sector-animation {
+    20% {
+        width: 0%;
+        left: 0%;
+    }
+
+    75% {
+        width: 100%;
+        left: 0%;
+    }
+
+    100% {
+        width: 0%;
+        left: 100%;
+    }
+}
+`
+
+document.addEventListener("DOMContentLoaded", initStrips);
 
 document.addEventListener("visibilitychange", handleAnimation);
 
-function loadStrips() {
+function initStrips() {
     setTimeout(() => {
-        appendStrips(document.getElementById("img-strip"));
-        animateStrip();
+        loadStrips();
     }, STRIPS_ANIMATION_DELAY * 1000);
 }
 
-function appendStrips(parent) {
-    const stripsContainer = document.createElement('div');
-    stripsContainer.id = 'strips-container';
+function loadStrips() {
+    appendStrips();
+    animateStrip();
+}
 
-    for (let i = 0; i < STRIPS_NUM; i++) {
-        stripsContainer.appendChild(createStrip());
+function appendStrips() {
+    let elm = document.getElementById('strips-container');
+
+    if (elm != null) {
+        elm.parentNode.replaceChild(elm.cloneNode(true), elm);
+    } else {
+        const stripsContainer = document.createElement('div');
+        stripsContainer.id = 'strips-container';
+
+        for (let i = 0; i < STRIPS_NUM; i++) {
+            stripsContainer.appendChild(createStrip());
+        }
+
+        let parent = document.getElementById("img-strip")
+        parent.appendChild(stripsContainer);
+
+        addStripsAnimation();
     }
-
-    parent.appendChild(stripsContainer);
 }
 
 function createStrip() {
@@ -59,11 +157,28 @@ function animateStrip() {
     let lscs = document.getElementsByClassName("l-sector-container");
     let rscs = document.getElementsByClassName("r-sector-container");
 
+    addStripsAnimation();
+
     randomAnimationStartUpDelay(lscs, rscs);
 
     initialStripsStartUp(lscs, rscs);
 
     initialStripsInterval(lscs, rscs);
+}
+
+function addStripsAnimation() {
+    let old_styleSheet = document.getElementById('strips-css');
+
+    if (old_styleSheet != null) {
+        document.head.removeChild(old_styleSheet);
+    }
+
+    let new_styleSheet = document.createElement("style");
+
+    new_styleSheet.id = "strips-css";
+    new_styleSheet.innerText = STRIPS_CSS_STYLE;
+
+    document.head.appendChild(new_styleSheet);
 }
 
 function randomAnimationStartUpDelay(lscs, rscs) {
@@ -110,10 +225,5 @@ function handleAnimation() {
         clearInterval(id);
     }
 
-    let elm = document.getElementById('strips-container');
-    if (elm != null) {
-        elm.parentNode.replaceChild(elm.cloneNode(true), elm);
-    }
-
-    animateStrip();
+    loadStrips();
 }
