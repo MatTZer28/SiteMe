@@ -141,7 +141,7 @@ main {
 
 .subtitle::before {
     content: "";
-    width: 18px;
+    width: 10px;
     height: 100%;
     bottom: 5px;
     position: absolute;
@@ -176,8 +176,8 @@ main {
 
 .subtitle::after {
     content: "";
-    width: 18px;
-    height: 3px;
+    width: 10px;
+    height: 2px;
     bottom: 5px;
     position: absolute;
     background-color: transparent;
