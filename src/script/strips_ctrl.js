@@ -40,7 +40,7 @@ const STRIPS_CSS_STYLE = `
     height: 60%;
     position: absolute;
     background-image: linear-gradient(to right, rgb(210, 250, 255), rgb(230, 252, 255));
-    animation: l-sector-animation 4s forwards infinite;
+    animation: l-sector-animation ${STRIP_ANIMATION_DURATION}s forwards infinite;
     animation-timing-function: cubic-bezier(.31, .58, .48, 1);
 }
 
@@ -49,7 +49,7 @@ const STRIPS_CSS_STYLE = `
     height: 60%;
     position: absolute;
     background-image: linear-gradient(to right, rgb(230, 252, 255), rgb(210, 250, 255));
-    animation: r-sector-animation 4s forwards infinite;
+    animation: r-sector-animation ${STRIP_ANIMATION_DURATION}s forwards infinite;
     animation-timing-function: cubic-bezier(.69, 0, .73, .44);
 }
 
